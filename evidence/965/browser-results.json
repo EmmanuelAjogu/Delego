@@ -1,0 +1,92 @@
+[
+  {
+    "width": 1280,
+    "invalidCode": "pass",
+    "validCode": "pass",
+    "merchantChange": "pass",
+    "checkoutDiscount": "pass",
+    "requests": [
+      {
+        "code": "EXPIRED",
+        "merchantId": "tea-shop",
+        "subtotalStroops": "100000000",
+        "items": [
+          {
+            "productId": "tea",
+            "quantity": 1,
+            "priceStroops": "100000000"
+          }
+        ]
+      },
+      {
+        "code": "SUMMER10",
+        "merchantId": "tea-shop",
+        "subtotalStroops": "100000000",
+        "items": [
+          {
+            "productId": "tea",
+            "quantity": 1,
+            "priceStroops": "100000000"
+          }
+        ]
+      },
+      {
+        "code": "SUMMER10",
+        "merchantId": "studio",
+        "subtotalStroops": "200000000",
+        "items": [
+          {
+            "productId": "mug",
+            "quantity": 1,
+            "priceStroops": "200000000"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "invalidCode": "pass",
+    "validCode": "pass",
+    "merchantChange": "pass",
+    "checkoutDiscount": "pass",
+    "requests": [
+      {
+        "code": "EXPIRED",
+        "merchantId": "tea-shop",
+        "subtotalStroops": "100000000",
+        "items": [
+          {
+            "productId": "tea",
+            "quantity": 1,
+            "priceStroops": "100000000"
+          }
+        ]
+      },
+      {
+        "code": "SUMMER10",
+        "merchantId": "tea-shop",
+        "subtotalStroops": "100000000",
+        "items": [
+          {
+            "productId": "tea",
+            "quantity": 1,
+            "priceStroops": "100000000"
+          }
+        ]
+      },
+      {
+        "code": "SUMMER10",
+        "merchantId": "studio",
+        "subtotalStroops": "200000000",
+        "items": [
+          {
+            "productId": "mug",
+            "quantity": 1,
+            "priceStroops": "200000000"
+          }
+        ]
+      }
+    ]
+  }
+]
