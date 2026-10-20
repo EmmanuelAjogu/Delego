@@ -1,0 +1,45 @@
+name: Issue 965 validation
+on:
+  push:
+    branches: [validation/965-coupons]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm --filter @delegolabs/ui build
+      - name: Frontend suite
+        continue-on-error: true
+        run: |
+          set +e
+          pnpm --filter @delegolabs/web exec vitest run --maxWorkers=4 --minWorkers=1 --reporter=json --outputFile="$GITHUB_WORKSPACE/frontend-tests.json" > frontend-tests.log 2>&1
+          result=$?
+          echo "frontend=$result" >> validation-exits.txt
+          exit "$result"
+      - name: Shared UI suite
+        continue-on-error: true
+        run: |
+          set +e
+          pnpm --filter @delegolabs/ui exec vitest run --maxWorkers=4 --minWorkers=1 --reporter=json --outputFile="$GITHUB_WORKSPACE/ui-tests.json" > ui-tests.log 2>&1
+          result=$?
+          echo "ui=$result" >> validation-exits.txt
+          exit "$result"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: issue-965-validation
+          path: |
+            frontend-tests.json
+            frontend-tests.log
+            ui-tests.json
+            ui-tests.log
+            validation-exits.txt
